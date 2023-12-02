@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClassicAlgoController">
+   <children>
+      <Label layoutX="207.0" layoutY="14.0" text="Classic Cryptography">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="message" layoutX="15.0" layoutY="71.0" prefHeight="135.0" prefWidth="274.0" />
+      <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHomeScene" text="Go Back" />
+      <Button layoutX="18.0" layoutY="237.0" mnemonicParsing="false" text="Caesar" />
+      <Button layoutX="88.0" layoutY="237.0" mnemonicParsing="false" text="Shift" />
+      <TextField fx:id="shfit" layoutX="137.0" layoutY="236.0" prefHeight="26.0" prefWidth="40.0" />
+      <Button layoutX="199.0" layoutY="237.0" mnemonicParsing="false" text="Hill 2x2" />
+      <Button layoutX="272.0" layoutY="236.0" mnemonicParsing="false" onAction="#tripleHillEncrypt" text="Hill 3x3" />
+      <TextArea fx:id="key" layoutX="379.0" layoutY="237.0" prefHeight="62.0" prefWidth="203.0" />
+      <Label layoutX="379.0" layoutY="219.0" text="key" />
+      <Button layoutX="18.0" layoutY="282.0" mnemonicParsing="false" text="Vigenere" />
+      <Button layoutX="96.0" layoutY="281.0" mnemonicParsing="false" text="Rail Fence" />
+      <Button layoutX="184.0" layoutY="282.0" mnemonicParsing="false" text="Affine" />
+      <TextField fx:id="affine_key1" layoutX="234.0" layoutY="281.0" prefHeight="26.0" prefWidth="40.0" />
+      <TextField fx:id="affine_key2" layoutX="280.0" layoutY="280.0" prefHeight="26.0" prefWidth="40.0" />
+      <Button layoutX="18.0" layoutY="321.0" mnemonicParsing="false" text="Enigma" />
+      <Button layoutX="96.0" layoutY="321.0" mnemonicParsing="false" text="Playfair" />
+      <TextArea fx:id="result" layoutX="306.0" layoutY="71.0" prefHeight="135.0" prefWidth="274.0" />
+      <Label layoutX="138.0" layoutY="44.0" text="Input" />
+      <Label layoutX="429.0" layoutY="44.0" text="Output" />
+      <RadioButton layoutX="379.0" layoutY="313.0" mnemonicParsing="false" text="Encryption" />
+      <RadioButton layoutX="379.0" layoutY="338.0" mnemonicParsing="false" text="Decryption" />
+   </children>
+</AnchorPane>
