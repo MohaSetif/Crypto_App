@@ -27,7 +27,7 @@ public class ClassicAlgoController {
     public void tripleHillEncrypt() {
         String inputText = message.getText();
         String hill_key = key.getText();
-        result.setText(TripleHill.hillCipherEncrypt(inputText, hill_key));
+        result.setText(TripleHill.hillCipherDecrypt(inputText, hill_key));
     }
 
     public void switchToHomeScene(ActionEvent event) throws IOException {
