@@ -1,5 +1,9 @@
+package crypto_algos;
+
 public class Vigenere {
     public static String vigenereEncrypt(String message, String key) {
+        message = message.replaceAll(" ", "").toUpperCase();
+        key = key.replaceAll(" ", "").toUpperCase();
         StringBuilder encryptedText = new StringBuilder();
         int messageLength = message.length();
         int keyLength = key.length();
@@ -14,13 +18,15 @@ public class Vigenere {
         return encryptedText.toString();
     }
 
-    public static String vigenereDecrypt(String encryptedText, String key) {
+    public static String vigenereDecrypt(String ciphertext, String key) {
+        ciphertext = ciphertext.replaceAll(" ", "").toUpperCase();
+        key = key.replaceAll(" ", "").toUpperCase();
         StringBuilder decryptedText = new StringBuilder();
-        int messageLength = encryptedText.length();
+        int messageLength = ciphertext.length();
         int keyLength = key.length();
 
         for (int i = 0; i < messageLength; i++) {
-            char encryptedChar = encryptedText.charAt(i);
+            char encryptedChar = ciphertext.charAt(i);
             char keyChar = key.charAt(i % keyLength);
             int decryptedChar = (encryptedChar - keyChar + 26) % 26 + 'A';
             decryptedText.append((char) decryptedChar);

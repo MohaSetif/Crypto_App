@@ -1,14 +1,14 @@
 package crypto_algos;
 
-public class Affine {
-    public static String Affine_Enc(String message, int k1, int k2) {
+public class Shift {
+    public static String Shift_Enc(String message, int s) {
         message = message.replaceAll(" ", "").toUpperCase();
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < message.length(); i++) {
-            char ch = message.charAt(i);
+        for (int j = 0; j < message.length(); j++) {
+            char ch = message.charAt(j);
             if(Character.isLetter(ch)){
-                int C = (k1 * (message.charAt(i) - 'A') + k2) % 26;
+                int C = (message.charAt(j) - 'A' + s) % 26;
                 if (C < 0) {
                     C += 26;
                 }
@@ -17,20 +17,22 @@ public class Affine {
                 continue;
             }
         }
+
         return result.toString();
     }
 
-    public static String Affine_Dec(String ciphertext, int inv_k1, int k2) {
-        ciphertext = ciphertext.replaceAll(" ", "").toUpperCase();
-
+    public static String Shift_Dec(String cipher, int s) {
+        cipher = cipher.replaceAll(" ", "").toUpperCase();
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < ciphertext.length(); i++) {
-            int M = (inv_k1 * ((ciphertext.charAt(i) - 'A') - k2)) % 26;
+
+        for (int j = 0; j < cipher.length(); j++) {
+            int M = (cipher.charAt(j) - 'A' - s) % 26;
             if (M < 0) {
                 M += 26;
             }
             result.append((char) (M + 'A'));
         }
+
         return result.toString();
     }
 }

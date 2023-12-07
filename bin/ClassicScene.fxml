@@ -16,30 +16,26 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="message" layoutX="16.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" />
+      <TextArea fx:id="message" layoutX="16.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your plain text..." />
       <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHomeScene" text="Go Back" />
-      <Button layoutX="17.0" layoutY="267.0" mnemonicParsing="false" text="Caesar" />
-      <Button layoutX="87.0" layoutY="267.0" mnemonicParsing="false" text="Shift" />
-      <TextField fx:id="shfit" layoutX="136.0" layoutY="266.0" prefHeight="26.0" prefWidth="40.0" />
-      <Button layoutX="198.0" layoutY="267.0" mnemonicParsing="false" onAction="#DoubleHillCipher" text="Hill 2x2" />
-      <Button layoutX="271.0" layoutY="266.0" mnemonicParsing="false" onAction="#tripleHillCipher" text="Hill 3x3" />
-      <TextArea fx:id="key" layoutX="378.0" layoutY="267.0" prefHeight="62.0" prefWidth="203.0" />
-      <Label layoutX="378.0" layoutY="249.0" text="key" />
-      <Button layoutX="17.0" layoutY="312.0" mnemonicParsing="false" text="Vigenere" />
-      <Button layoutX="95.0" layoutY="311.0" mnemonicParsing="false" text="Rail Fence" />
-      <Button layoutX="183.0" layoutY="312.0" mnemonicParsing="false" text="Affine" />
-      <TextField fx:id="affine_key1" layoutX="233.0" layoutY="311.0" prefHeight="26.0" prefWidth="40.0" />
-      <TextField fx:id="affine_key2" layoutX="279.0" layoutY="310.0" prefHeight="26.0" prefWidth="40.0" />
-      <Button layoutX="17.0" layoutY="351.0" mnemonicParsing="false" text="Enigma" />
-      <Button layoutX="95.0" layoutY="351.0" mnemonicParsing="false" text="Playfair" />
-      <TextArea fx:id="result" layoutX="307.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" />
-      <Label layoutX="139.0" layoutY="86.0" text="Input" />
-      <Label layoutX="430.0" layoutY="86.0" text="Output" />
-      <RadioButton fx:id="encryptionRadioButton" layoutX="378.0" layoutY="343.0" mnemonicParsing="false" selected="true" text="Encryption">
+      <Button layoutX="181.0" layoutY="330.0" mnemonicParsing="false" onAction="#CaesarCipher" text="Caesar" />
+      <Button layoutX="18.0" layoutY="285.0" mnemonicParsing="false" onAction="#ShiftCipher" text="Shift" />
+      <TextField fx:id="shift" layoutX="67.0" layoutY="284.0" prefHeight="26.0" prefWidth="78.0" promptText="Shift key" />
+      <Button layoutX="245.0" layoutY="329.0" mnemonicParsing="false" onAction="#DoubleHillCipher" text="Hill 2x2" />
+      <Button layoutX="305.0" layoutY="329.0" mnemonicParsing="false" onAction="#tripleHillCipher" text="Hill 3x3" />
+      <TextArea fx:id="key" layoutX="379.0" layoutY="285.0" prefHeight="62.0" prefWidth="203.0" promptText="Set your Vigenere or Hill key..." />
+      <Button layoutX="18.0" layoutY="330.0" mnemonicParsing="false" onAction="#VigenereCipher" text="Vigenere" />
+      <Button layoutX="96.0" layoutY="329.0" mnemonicParsing="false" onAction="#RailFenceCipher" prefHeight="26.0" prefWidth="78.0" text="Rail Fence" />
+      <Button layoutX="168.0" layoutY="285.0" mnemonicParsing="false" onAction="#AffineCipher" text="Affine" />
+      <TextArea fx:id="result" layoutX="307.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your result..." />
+      <RadioButton fx:id="encryptionRadioButton" layoutX="26.0" layoutY="60.0" mnemonicParsing="false" selected="true" text="Encryption">
          <toggleGroup>
             <ToggleGroup fx:id="mode" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="decryptionRadioButton" layoutX="378.0" layoutY="368.0" mnemonicParsing="false" text="Decryption" toggleGroup="$mode" />
-      <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="57.0" prefHeight="18.0" prefWidth="235.0" textAlignment="CENTER" />
+      <RadioButton fx:id="decryptionRadioButton" layoutX="26.0" layoutY="85.0" mnemonicParsing="false" text="Decryption" toggleGroup="$mode" />
+      <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="63.0" prefHeight="18.0" prefWidth="235.0" textAlignment="CENTER" />
+      <TextField fx:id="affine_key1" layoutX="227.0" layoutY="284.0" prefHeight="26.0" prefWidth="64.0" promptText="Add key" />
+      <TextField fx:id="affine_key2" layoutX="301.0" layoutY="284.0" prefHeight="26.0" prefWidth="64.0" promptText="Mult key" />
+      <TextField fx:id="rails" layoutX="96.0" layoutY="359.0" prefHeight="26.0" prefWidth="78.0" promptText="nbr of rails" />
    </children>
 </AnchorPane>
