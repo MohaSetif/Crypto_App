@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 
 
 public class MainSceneController {
-
-        
     private Stage stage;
     private Scene scene;
     private Parent root;

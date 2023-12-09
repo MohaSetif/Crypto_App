@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ECC",
+            "request": "launch",
+            "mainClass": "crypto_algos.ECC",
+            "projectName": "Crypto_App_c54126ae"
+        },
+        {
+            "type": "java",
+            "name": "DES",
+            "request": "launch",
+            "mainClass": "crypto_algos.DES",
+            "projectName": "Crypto_App_c54126ae"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

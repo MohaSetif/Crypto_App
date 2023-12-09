@@ -1,3 +1,5 @@
+package crypto_algos;
+
 public class RSA {
     public static int[] RSA_enc(String message, int p, int q){
         int e = 7;
@@ -30,9 +32,6 @@ public class RSA {
         int[] decrypted = new int[encrypted.length];
         for(int i = 0; i < encrypted.length; i++){
             int C = encrypted[i];
-            //System.out.println("C: "+C);
-            //System.out.println("d: "+d);
-            //System.out.println("n: "+n);
             int M = SquareMultiply(C, privateKey[1], privateKey[0]);
             decrypted[i] = M;
         }
@@ -49,7 +48,7 @@ public class RSA {
                 result = (result * base) % modulus;
             }
             base = (base * base) % modulus;
-            exponent = exponent / 2; //or >> 1
+            exponent = exponent / 2;
         }
         return result;
     }

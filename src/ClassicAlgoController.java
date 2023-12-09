@@ -25,7 +25,6 @@ import javafx.util.Duration;
 
 
 public class ClassicAlgoController {
-
     private Stage stage;
     private Scene scene;
     private Parent root;
