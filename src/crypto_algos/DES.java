@@ -1,47 +1,81 @@
 package crypto_algos;
 
-import java.security.spec.KeySpec;
-import java.util.Base64;
 import javax.crypto.*;
-import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
 
 public class DES {
 
-    public static String DES_Enc(String message, String key) throws Exception {
-        message = message.replaceAll(" ", "").toUpperCase();
+    public static String DES_Enc(String message, String key, String mode) throws Exception {
         StringBuilder result = new StringBuilder();
-        byte[] desKeyBytes = key.getBytes();
+        byte[] plainText = message.getBytes();
+        IvParameterSpec iv;
+        SecretKeySpec secretKeySpec = generateKey(key);
 
-        KeySpec desKeySpec = new DESKeySpec(desKeyBytes);
+        if(mode == "ECB"){
+            iv = null;
+        }else{
+            iv = genIV();
+        }
 
-        SecretKeyFactory desKeyFactory = SecretKeyFactory.getInstance("DES");
-        SecretKey desKeySecret = desKeyFactory.generateSecret(desKeySpec);
+        byte[] encryptedContent = encrypt(plainText, secretKeySpec, iv, mode);
 
-        Cipher desCipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+        String encodedEncryptedContent = Base64.getEncoder().encodeToString(encryptedContent);
+        result.append(encodedEncryptedContent);
 
-        desCipher.init(Cipher.ENCRYPT_MODE, desKeySecret);
-        byte[] encryptedBytes = desCipher.doFinal(message.getBytes());
-        String encryptedMessage = Base64.getEncoder().encodeToString(encryptedBytes);
-        result.append(encryptedMessage);
         return result.toString();
     }
 
-    public static String DES_Dec(String cipher, String key) throws Exception {
+    public static String DES_Dec(String cipher, String key, String mode) throws Exception {
         StringBuilder result = new StringBuilder();
-        byte[] cipherBytes = Base64.getDecoder().decode(cipher);
-        byte[] desKeyBytes = key.getBytes();
+        IvParameterSpec iv;
+        byte[] cipherText = Base64.getDecoder().decode(cipher);
 
-        KeySpec desKeySpec = new DESKeySpec(desKeyBytes);
+        SecretKeySpec secretKeySpec = generateKey(key);
+        
+        if(mode == "ECB"){
+            iv = null;
+        }else{
+            iv = genIV();
+        }
 
-        SecretKeyFactory desKeyFactory = SecretKeyFactory.getInstance("DES");
-        SecretKey desKeySecret = desKeyFactory.generateSecret(desKeySpec);
-
-        Cipher desCipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-
-         desCipher.init(Cipher.DECRYPT_MODE, desKeySecret);
-        byte[] decryptedBytes = desCipher.doFinal(cipherBytes);
-        String decryptedMessage = new String(decryptedBytes);
+        byte[] decryptedContent = decrypt(cipherText, secretKeySpec, iv, mode);
+        String decryptedMessage = new String(decryptedContent);
         result.append(decryptedMessage);
         return result.toString();
     }
+
+    private static SecretKeySpec generateKey(String key) throws Exception {
+        byte[] keyBytes = key.getBytes();
+        return new SecretKeySpec(keyBytes, "DES");
+    }
+
+    private static byte[] encrypt(byte[] input, SecretKeySpec key, IvParameterSpec iv, String mode) throws Exception {
+        Cipher cipher;
+        if(mode == "CTR"){
+            cipher = Cipher.getInstance("DES/CTR/NoPadding");
+        }else{
+            cipher = Cipher.getInstance("DES/"+mode+"/PKCS5Padding");
+        }
+        cipher.init(Cipher.ENCRYPT_MODE, key, iv);
+        return cipher.doFinal(input);
+    }
+
+    private static byte[] decrypt(byte[] encryptedInput, SecretKeySpec key, IvParameterSpec iv, String mode) throws Exception {
+        Cipher cipher;
+        if(mode == "CTR"){
+            cipher = Cipher.getInstance("DES/CTR/NoPadding");
+        }else{
+            cipher = Cipher.getInstance("DES/"+mode+"/PKCS5Padding");
+        }
+        cipher.init(Cipher.DECRYPT_MODE, key, iv);
+        return cipher.doFinal(encryptedInput);
+    }
+
+    private static IvParameterSpec genIV() {
+        byte[] iv = new byte[8];
+        return new IvParameterSpec(iv);
+    }
 }
+

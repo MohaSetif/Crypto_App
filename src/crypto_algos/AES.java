@@ -54,7 +54,7 @@ public class AES {
     private static byte[] encrypt(byte[] input, SecretKeySpec key, IvParameterSpec iv, String mode) throws Exception {
         Cipher cipher;
         if(mode == "CTR"){
-            cipher = Cipher.getInstance("AES/"+mode+"/NoPadding");
+            cipher = Cipher.getInstance("AES/CTR/NoPadding");
         }else{
             cipher = Cipher.getInstance("AES/"+mode+"/PKCS5Padding");
         }
@@ -65,7 +65,7 @@ public class AES {
     private static byte[] decrypt(byte[] encryptedInput, SecretKeySpec key, IvParameterSpec iv, String mode) throws Exception {
         Cipher cipher;
         if(mode == "CTR"){
-            cipher = Cipher.getInstance("AES/"+mode+"/NoPadding");
+            cipher = Cipher.getInstance("AES/CTR/NoPadding");
         }else{
             cipher = Cipher.getInstance("AES/"+mode+"/PKCS5Padding");
         }
