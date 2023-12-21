@@ -3,8 +3,6 @@ package crypto_algos;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 
-import javax.crypto.Cipher;
-
 public class Digital_Signature {
     public static String generateDS(String message, int keySize, String algorithm) throws Exception {
         try {
@@ -12,7 +10,7 @@ public class Digital_Signature {
             byte[] signature = generateSignature(message, keyPair.getPrivate(), algorithm);
             return bytesToHex(signature);
         } catch (NoSuchAlgorithmException e) {
-            throw new NoSuchAlgorithmException("Algorithm " + algorithm + " with key size " + keySize + " not supported.");
+            throw new NoSuchAlgorithmException("Algorithm "+algorithm+" with key size "+keySize+" not supported.");
         }
     }
 
@@ -23,23 +21,10 @@ public class Digital_Signature {
     }
 
     private static byte[] generateSignature(String message, PrivateKey privateKey, String algorithm) throws Exception {
-        Cipher cipher = Cipher.getInstance(algorithm);
-        if (algorithm == "RSA") {
-            cipher.init(Cipher.ENCRYPT_MODE, privateKey);
-            Signature dsa = Signature.getInstance("SHA256withRSA");
-            dsa.initSign(privateKey);
-            dsa.update(message.getBytes(StandardCharsets.UTF_8));
-            return dsa.sign();
-        } else if (algorithm == "DSA") {
-            Signature dsa = Signature.getInstance("SHA256withDSA");
-            dsa.initSign(privateKey);
-            dsa.update(message.getBytes(StandardCharsets.UTF_8));
-            return dsa.sign();
-        } else if (algorithm == "DH") {
-            throw new UnsupportedOperationException("DH algorithm does not support digital signatures.");
-        } else {
-            throw new UnsupportedOperationException("Unsupported algorithm: " + algorithm);
-        }
+        Signature signature = Signature.getInstance("SHA256with"+algorithm);
+        signature.initSign(privateKey);
+        signature.update(message.getBytes(StandardCharsets.UTF_8));
+        return signature.sign();
     }
 
     private static String bytesToHex(byte[] hash) {

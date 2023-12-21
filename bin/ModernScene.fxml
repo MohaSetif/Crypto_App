@@ -68,6 +68,5 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="ds_dsa" layoutX="468.0" layoutY="295.0" mnemonicParsing="false" text="DSA" toggleGroup="$DS_type" />
-      <RadioButton fx:id="ds_dh" layoutX="406.0" layoutY="295.0" mnemonicParsing="false" text="DH" toggleGroup="$DS_type" />
    </children>
 </AnchorPane>

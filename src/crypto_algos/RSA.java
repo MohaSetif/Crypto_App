@@ -1,28 +1,45 @@
 package crypto_algos;
 
 public class RSA {
-    public static int[] RSA_enc(String message, int p, int q, int e){
+    public static String RSA_enc(String message, int p, int q, int e){
         int[] publicKey = PublicKeyGeneration(p, q, e);
 
         message = message.toUpperCase();
+        int C;
         int[] encrypted = new int[message.length()];
         for(int i = 0; i < message.length(); i++){
-            int m = message.charAt(i) - 'A'; // Assuming A represents 0, B represents 1, and so on
-            int C = SquareMultiply(m, publicKey[1], publicKey[0]);
-            encrypted[i] = C;
+            int m = message.charAt(i) - 'A';
+            int n = p*q;
+            int phi = (p-1)*(q-1);
+
+            if(Euclidean.is_euclidean(e, phi) == 1){
+                if(m<n){
+                    C = (int) Math.pow(m,publicKey[1]) % publicKey[0];
+                    encrypted[i] = C;
+                }
+            }
         }
-        return encrypted;
+        
+        StringBuilder encryptedString = new StringBuilder();
+        for (int i = 0; i < encrypted.length; i++) {
+            encryptedString.append(encrypted[i]);
+            if (i < encrypted.length - 1) {
+                encryptedString.append(" ");
+            }
+        }
+        return encryptedString.toString();
     }
 
-    public static String RSA_dec(int[] encrypted, int p, int q, int e){
+    public static int[] RSA_dec(int[] encrypted, int p, int q, int e){
         int[] privateKey = PrivateKeyGeneration(p, q, e);
         
-        StringBuilder decrypted = new StringBuilder();
+        int[] decrypted = new int[encrypted.length];
         for(int i = 0; i < encrypted.length; i++){
-            int M = SquareMultiply(encrypted[i], privateKey[1], privateKey[0]);
-            decrypted.append((char) M);
+            int C = encrypted[i];
+            int M = SquareMultiply(C, privateKey[1], privateKey[0]);
+            decrypted[i] = M;
         }
-        return decrypted.toString();
+        return decrypted;
     }
 
     public static int SquareMultiply(int base, int exponent, int modulus) {

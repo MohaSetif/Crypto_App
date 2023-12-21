@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
 import crypto_algos.*;
 import crypto_algos.AES;
@@ -33,7 +32,7 @@ public class ModernAlgoController {
     @FXML
     private Label error;
     @FXML
-    private RadioButton encryptionRadioButton, decryptionRadioButton, aes_128, aes_192, aes_256, ECB, CBC, CFB, OFB, CTR, sha1, sha256, ds_1024, ds_2048, ds_4096, ds_rsa, ds_dh, ds_dsa;
+    private RadioButton encryptionRadioButton, decryptionRadioButton, aes_128, aes_192, aes_256, ECB, CBC, CFB, OFB, CTR, sha1, sha256, ds_1024, ds_2048, ds_4096, ds_rsa, ds_dsa;
 
     public void setError(String err){
         error.setText(err);
@@ -155,31 +154,23 @@ public class ModernAlgoController {
         }
 
         if (encryptionRadioButton.isSelected()) {
-
-            int[] resultEnc = RSA.RSA_enc(inputText, p, q, e);
-            if (resultEnc == null) {
-                setError("Invalid RSA parameters.");
-                return;
+            result.setText(RSA.RSA_enc(inputText, p, q, e));
+        } else if (decryptionRadioButton.isSelected()) {
+            String[] encryptedValues = inputText.split(" ");
+            int[] encryptedArray = new int[encryptedValues.length];
+            for (int i = 0; i < encryptedValues.length; i++) {
+                encryptedArray[i] = Integer.parseInt(encryptedValues[i]);
             }
-
-        result.appendText(Arrays.toString(resultEnc));
-
-    } else if (decryptionRadioButton.isSelected()) {
-
-        int[] intArray = new int[inputText.length()];
     
-        for (int i = 0; i < inputText.length(); i++) {
-            intArray[i] = inputText.charAt(i);
-        }
+            // Perform decryption using the int[] array
+            int[] decryptedArray = RSA.RSA_dec(encryptedArray, p, q, e);
     
-        String resultDec = RSA.RSA_dec(intArray, p, q, e);
-        if (resultDec == null) {
-            setError("Invalid RSA parameters.");
-            return;
-        }
-    
-        result.appendText(resultDec);
-    
+            // Convert the decrypted int[] array back to a formatted string for display
+            StringBuilder decryptedString = new StringBuilder();
+            for (int i = 0; i < decryptedArray.length; i++) {
+                decryptedString.append((char) (decryptedArray[i] + 'A'));
+            }
+            result.setText(decryptedString.toString());
         } else {
             setError("Please select encryption or decryption.");
             return;
@@ -203,7 +194,7 @@ public class ModernAlgoController {
     public void Digital_Sign() throws Exception {
         String inputText = message.getText();
         int ds_size = ds_1024.isSelected() ? 1024 : (ds_2048.isSelected() ? 2048 : (ds_4096.isSelected() ? 4096 : 0));
-        String ds_type = ds_rsa.isSelected() ? "RSA" : (ds_dh.isSelected() ? "DH" : (ds_dsa.isSelected() ? "DSA" : ""));
+        String ds_type = ds_rsa.isSelected() ? "RSA" : (ds_dsa.isSelected() ? "DSA" : "");
         
         if (inputText.isEmpty()) {
             setError("Please set your plain text.");
@@ -218,8 +209,9 @@ public class ModernAlgoController {
             return;
         }
         
-        if (ds_type.equals("DSA")) {
-            ds_4096.setDisable(true);
+        if (ds_type.equals("DSA") && ds_size == 4096) {
+            setError("DSA only works with 1024 and 2048 bits");
+            return;
         }
         
         try {
@@ -227,8 +219,6 @@ public class ModernAlgoController {
             result.setText(signature);
         } catch (NoSuchAlgorithmException e) {
             setError("Selected algorithm not supported.");
-        } catch (Exception ex) {
-            setError("An error occurred during signature generation.");
         }
     }
 
