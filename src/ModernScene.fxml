@@ -3,25 +3,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModernAlgoController">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="style.css" fx:controller="ModernAlgoController">
    <children>
       <Label layoutX="206.0" layoutY="14.0" text="Modern Cryptography">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="message" layoutX="16.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your plain text..." />
-      <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHomeScene" text="Go Back" />
-      <Button layoutX="16.0" layoutY="258.0" mnemonicParsing="false" onAction="#AES_Cipher" prefHeight="26.0" prefWidth="72.0" text="AES" />
+      <TextArea styleClass="custom-input" fx:id="message" layoutX="16.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your plain text..." />
+      <Button styleClass="cipher-button" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHomeScene" text="Go Back" />
+      <Button styleClass="cipher-button" layoutX="16.0" layoutY="258.0" mnemonicParsing="false" onAction="#AES_Cipher" prefHeight="26.0" prefWidth="72.0" text="AES" />
       <TextField fx:id="aes_key" layoutX="101.0" layoutY="258.0" prefHeight="26.0" prefWidth="122.0" promptText="Your AES key..." />
-      <Button layoutX="17.0" layoutY="359.0" mnemonicParsing="false" onAction="#RSA_Cipher" prefHeight="26.0" prefWidth="72.0" text="RSA" />
-      <TextArea editable="false" fx:id="result" layoutX="307.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your result..." />
+      <Button styleClass="cipher-button" layoutX="17.0" layoutY="359.0" mnemonicParsing="false" onAction="#RSA_Cipher" prefHeight="26.0" prefWidth="72.0" text="RSA" />
+      <TextArea styleClass="custom-input" editable="false" fx:id="result" layoutX="307.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your result..." />
       <RadioButton fx:id="encryptionRadioButton" layoutX="26.0" layoutY="60.0" mnemonicParsing="false" selected="true" text="Encryption">
          <toggleGroup>
             <ToggleGroup fx:id="mode" />
@@ -36,7 +38,7 @@
          </toggleGroup></RadioButton>
       <RadioButton fx:id="aes_192" layoutX="88.0" layoutY="294.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" text="192 bits" toggleGroup="$size" />
       <RadioButton fx:id="aes_256" layoutX="158.0" layoutY="294.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" text="256 bits" toggleGroup="$size" />
-      <Button layoutX="16.0" layoutY="323.0" mnemonicParsing="false" onAction="#DES_Cipher" prefHeight="26.0" prefWidth="72.0" text="DES" />
+      <Button styleClass="cipher-button" layoutX="16.0" layoutY="323.0" mnemonicParsing="false" onAction="#DES_Cipher" prefHeight="26.0" prefWidth="72.0" text="DES" />
       <TextField fx:id="des_key" layoutX="101.0" layoutY="323.0" prefHeight="26.0" prefWidth="122.0" promptText="Your DES key..." />
       <TextField fx:id="e_val" layoutX="244.0" layoutY="359.0" prefHeight="26.0" prefWidth="64.0" promptText="Insert e" />
       <RadioButton fx:id="ECB" layoutX="290.0" layoutY="85.0" mnemonicParsing="false" selected="true" text="ECB">
@@ -47,8 +49,8 @@
       <RadioButton fx:id="CFB" layoutX="410.0" layoutY="85.0" mnemonicParsing="false" text="CFB" toggleGroup="$modeofop" />
       <RadioButton fx:id="OFB" layoutX="471.0" layoutY="85.0" mnemonicParsing="false" text="OFB" toggleGroup="$modeofop" />
       <RadioButton fx:id="CTR" layoutX="535.0" layoutY="85.0" mnemonicParsing="false" text="CTR" toggleGroup="$modeofop" />
-      <Button layoutX="238.0" layoutY="258.0" mnemonicParsing="false" onAction="#Hash" prefHeight="26.0" prefWidth="103.0" text="Hash" />
-      <Button layoutX="238.0" layoutY="290.0" mnemonicParsing="false" onAction="#Digital_Sign" prefHeight="26.0" prefWidth="103.0" text="Digital Signiture" />
+      <Button styleClass="cipher-button" layoutX="238.0" layoutY="258.0" mnemonicParsing="false" onAction="#Hash" prefHeight="26.0" prefWidth="103.0" text="Hash" />
+      <Button styleClass="cipher-button" layoutX="238.0" layoutY="290.0" mnemonicParsing="false" onAction="#Digital_Sign" prefHeight="26.0" prefWidth="103.0" text="Digital Signiture" />
       <RadioButton fx:id="sha1" layoutX="350.0" layoutY="262.0" mnemonicParsing="false" text="SHA-1">
          <toggleGroup>
             <ToggleGroup fx:id="sha_type" />
@@ -68,6 +70,38 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="ds_dsa" layoutX="468.0" layoutY="295.0" mnemonicParsing="false" text="DSA" toggleGroup="$DS_type" />
-      <TextField editable="false" fx:id="cipher_desc" alignment="TOP_LEFT" layoutX="612.0" layoutY="18.0" prefHeight="733.0" prefWidth="740.0" />
+      <TabPane layoutX="604.0" layoutY="20.0" prefHeight="727.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Shift Cipher">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="668.0" prefWidth="718.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Affine Cipher">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Rail Fence Cipher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Vigenere Cipher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Hill Cipher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
