@@ -44,25 +44,21 @@ public class ClassicAlgoController {
     @FXML
     private RadioButton decryptionRadioButton;
     @FXML
-    private TextField affine_key1;
-    @FXML
-    private TextField affine_key2;
-    @FXML
-    private TextField shift;
+    private TextField affine_key1, affine_key2, shift, vig_key, hill_key;
 
     public void tripleHillCipher() {
         String inputText = message.getText();
-        String hill_key = key.getText();
+        String h_key = hill_key.getText();
         if (inputText.isEmpty()) {
             setError("Please set your plain text.");
         }
-        if (hill_key.isEmpty()) {
-            setError("Please set values for k1 and k2.");
+        if (h_key.isEmpty()) {
+            setError("Please set your 2x2 Hill key.");
         }
         if (encryptionRadioButton.isSelected()) {
-            result.setText(TripleHill.hillCipherEncrypt(inputText, hill_key));
+            result.setText(TripleHill.hillCipherEncrypt(inputText, h_key));
         } else if (decryptionRadioButton.isSelected()) {
-            result.setText(TripleHill.hillCipherDecrypt(inputText, hill_key));
+            result.setText(TripleHill.hillCipherDecrypt(inputText, h_key));
         } else {
             setError("Please select encryption or decryption.");
         }
@@ -70,17 +66,17 @@ public class ClassicAlgoController {
 
     public void DoubleHillCipher() {
         String inputText = message.getText();
-        String hill_key = key.getText();
+        String h_key = hill_key.getText();
         if (inputText.isEmpty()) {
             setError("Please set your plain text.");
         }
-        if (hill_key.isEmpty()) {
-            setError("Please set values for k1 and k2.");
+        if (h_key.isEmpty()) {
+            setError("Please set your 3x3 Hill key.");
         }
         if (encryptionRadioButton.isSelected()) {
-            result.setText(DoubleHill.Hill_Enc(inputText, hill_key));
+            result.setText(DoubleHill.Hill_Enc(inputText, h_key));
         } else if (decryptionRadioButton.isSelected()) {
-            result.setText(DoubleHill.Hill_Dec(inputText, hill_key));
+            result.setText(DoubleHill.Hill_Dec(inputText, h_key));
         } else {
             setError("Please select encryption or decryption.");
         }
@@ -88,17 +84,17 @@ public class ClassicAlgoController {
 
     public void VigenereCipher() {
         String inputText = message.getText();
-        String vig_key = key.getText();
+        String vigenere_key = vig_key.getText();
         if (inputText.isEmpty()) {
             setError("Please set your plain text.");
         }
-        if (vig_key.isEmpty()) {
-            setError("Please set your key.");
+        if (vigenere_key.isEmpty()) {
+            setError("Please set your Vigenere key.");
         }
         if (encryptionRadioButton.isSelected()) {
-            result.setText(Vigenere.vigenereEncrypt(inputText, vig_key));
+            result.setText(Vigenere.vigenereEncrypt(inputText, vigenere_key));
         } else if (decryptionRadioButton.isSelected()) {
-            result.setText(Vigenere.vigenereDecrypt(inputText, vig_key));
+            result.setText(Vigenere.vigenereDecrypt(inputText, vigenere_key));
         } else {
             setError("Please select encryption or decryption.");
         }

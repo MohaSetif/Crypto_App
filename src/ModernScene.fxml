@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModernAlgoController">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModernAlgoController">
    <children>
-      <Label layoutX="206.0" layoutY="14.0" text="Classic Cryptography">
+      <Label layoutX="206.0" layoutY="14.0" text="Modern Cryptography">
          <font>
             <Font size="20.0" />
          </font>
@@ -21,7 +21,7 @@
       <Button layoutX="16.0" layoutY="258.0" mnemonicParsing="false" onAction="#AES_Cipher" prefHeight="26.0" prefWidth="72.0" text="AES" />
       <TextField fx:id="aes_key" layoutX="101.0" layoutY="258.0" prefHeight="26.0" prefWidth="122.0" promptText="Your AES key..." />
       <Button layoutX="17.0" layoutY="359.0" mnemonicParsing="false" onAction="#RSA_Cipher" prefHeight="26.0" prefWidth="72.0" text="RSA" />
-      <TextArea fx:id="result" layoutX="307.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your result..." />
+      <TextArea editable="false" fx:id="result" layoutX="307.0" layoutY="113.0" prefHeight="135.0" prefWidth="274.0" promptText="Your result..." />
       <RadioButton fx:id="encryptionRadioButton" layoutX="26.0" layoutY="60.0" mnemonicParsing="false" selected="true" text="Encryption">
          <toggleGroup>
             <ToggleGroup fx:id="mode" />
@@ -68,5 +68,6 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="ds_dsa" layoutX="468.0" layoutY="295.0" mnemonicParsing="false" text="DSA" toggleGroup="$DS_type" />
+      <TextField editable="false" fx:id="cipher_desc" alignment="TOP_LEFT" layoutX="612.0" layoutY="18.0" prefHeight="733.0" prefWidth="740.0" />
    </children>
 </AnchorPane>

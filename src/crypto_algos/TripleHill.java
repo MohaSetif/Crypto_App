@@ -1,6 +1,8 @@
 package crypto_algos;
 
 public class TripleHill {
+    private static final int MATRIX_SIZE = 3;
+
     public static int[][] inverseKey(int[][] key) {
         int x = key[0][0] * ((key[1][1] * key[2][2]) - (key[1][2] * key[2][1]));
         int y = -key[1][0] * ((key[0][1] * key[2][2]) - (key[0][2] * key[2][1]));
@@ -34,57 +36,55 @@ public class TripleHill {
     }
 
     public static String hillCipherDecrypt(String ciphertext, String key) {
-        ciphertext = ciphertext.replaceAll(" ", "").toUpperCase();
-        key = key.replaceAll(" ", "").toUpperCase();
-    
+        ciphertext = ciphertext.replaceAll("[^a-zA-Z]", "").toUpperCase();
+        key = key.replaceAll("[^a-zA-Z]", "").toUpperCase();
+
         int original_length = ciphertext.length();
-    
         int padding = 9 - (ciphertext.length() % 9);
-    
+
         if (padding != 9) {
             for (int i = 0; i < padding; i++) {
                 ciphertext += 'X';
             }
         }
-    
-        int[][] c = new int[ciphertext.length() / 3][3];
-        int[][] k = new int[3][3];
-        int[][] r = new int[ciphertext.length() / 3][3];
-    
+
+        int[][] c = new int[ciphertext.length() / MATRIX_SIZE][MATRIX_SIZE];
+        int[][] k = new int[MATRIX_SIZE][MATRIX_SIZE];
+        int[][] r = new int[ciphertext.length() / MATRIX_SIZE][MATRIX_SIZE];
+
         for (int i = 0; i < ciphertext.length(); i++) {
-            c[i / 3][i % 3] = ciphertext.charAt(i) - 'A';
+            c[i / MATRIX_SIZE][i % MATRIX_SIZE] = ciphertext.charAt(i) - 'A';
         }
-    
-        for (int i = 0; i < 9; i++) {
-            k[i % 3][i / 3] = key.charAt(i) - 'A';
+
+        for (int i = 0; i < MATRIX_SIZE * MATRIX_SIZE; i++) {
+            k[i / MATRIX_SIZE][i % MATRIX_SIZE] = key.charAt(i) - 'A';
         }
-    
+
         int[][] inverseKey = inverseKey(k);
-    
-        for (int i = 0; i < ciphertext.length() / 3; i++) {
-            for (int j = 0; j < 3; j++) {
+
+        for (int i = 0; i < ciphertext.length() / MATRIX_SIZE; i++) {
+            for (int j = 0; j < MATRIX_SIZE; j++) {
                 r[i][j] = 0;
-                for (int x = 0; x < 3; x++) {
-                    r[i][j] += inverseKey[x][j] * c[i][x];
+                for (int x = 0; x < MATRIX_SIZE; x++) {
+                    r[i][j] += inverseKey[j][x] * c[i][x];
                     r[i][j] %= 26;
                 }
             }
         }
-    
+
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < original_length; i++) {
-            result.append((char) (r[i / 3][i % 3] + 'A'));
+            result.append((char) (r[i / MATRIX_SIZE][i % MATRIX_SIZE] + 'A'));
         }
-    
+
         return result.toString();
-    }    
-    
+    }        
+
     public static String hillCipherEncrypt(String message, String key) {
-        message = message.replaceAll(" ", "").toUpperCase();
-        key = key.replaceAll(" ", "").toUpperCase();
+        message = message.replaceAll("[^a-zA-Z]", "").toUpperCase();
+        key = key.replaceAll("[^a-zA-Z]", "").toUpperCase();
 
         int old_message_length = message.length();
-
         int padding = 9 - (message.length() % 9);
 
         if (padding != 9) {
@@ -93,34 +93,33 @@ public class TripleHill {
             }
         }
 
-        int[][] m = new int[message.length() / 3][3];
-        int[][] k = new int[3][3];
-        int[][] r = new int[message.length() / 3][3];
-    
+        int[][] m = new int[message.length() / MATRIX_SIZE][MATRIX_SIZE];
+        int[][] k = new int[MATRIX_SIZE][MATRIX_SIZE];
+        int[][] r = new int[message.length() / MATRIX_SIZE][MATRIX_SIZE];
+
         for (int i = 0; i < message.length(); i++) {
-            m[i / 3][i % 3] = message.charAt(i) - 'A';
+            m[i / MATRIX_SIZE][i % MATRIX_SIZE] = message.charAt(i) - 'A';
         }
 
-        for (int i = 0; i < 9; i++) {
-            k[i % 3][i / 3] = key.charAt(i) - 'A';
+        for (int i = 0; i < MATRIX_SIZE * MATRIX_SIZE; i++) {
+            k[i / MATRIX_SIZE][i % MATRIX_SIZE] = key.charAt(i) - 'A';
         }
-    
-        for (int i = 0; i < message.length() / 3; i++) {
-            for (int j = 0; j < 3; j++) {
+
+        for (int i = 0; i < message.length() / MATRIX_SIZE; i++) {
+            for (int j = 0; j < MATRIX_SIZE; j++) {
                 r[i][j] = 0;
-                for (int x = 0; x < 3; x++) {
-                    r[i][j] += k[x][j] * m[i][x];
+                for (int x = 0; x < MATRIX_SIZE; x++) {
+                    r[i][j] += k[j][x] * m[i][x];
                     r[i][j] %= 26;
                 }
             }
         }
-    
+
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < old_message_length; i++) {
-            result.append((char) (r[i / 3][i % 3] + 'A'));
+            result.append((char) (r[i / MATRIX_SIZE][i % MATRIX_SIZE] + 'A'));
         }
 
         return result.toString();
     }
-    
 }

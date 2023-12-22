@@ -1,21 +1,25 @@
 @font-face {
-    font-family: "Regular-titillium";
+    font-family: Regular-titillium;
     src: url("../src/fonts/TitilliumWeb-Regular.ttf");
 }
 
 @font-face {
-    font-family: "Bold-titillium";
+    font-family: Bold-titillium;
     src: url("../src/fonts/TitilliumWeb-Bold.ttf");
 }
 
 @font-face {
-    font-family: "Light-titillium";
+    font-family: Light-titillium;
     src: url("../src/fonts/TitilliumWeb-Light.ttf");
 }
 
+*{
+    -fx-text-fill: rgb(66, 101, 148);
+}
+
 .root {
-    -fx-background-color: rgb(16, 6, 29);
-    -fx-font-family: "Regular-titillium";
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, rgb(205, 219, 233), rgb(120, 164, 202));
+    -fx-font-family: Regular-titillium;
 }
 
 .title {
@@ -25,18 +29,32 @@
 }
 
 .custom-button {
-    -fx-background-color: rgb(29, 10, 53);
+    -fx-background-color: rgb(104, 127, 168);
     -fx-background-radius: 10px;
     -fx-text-fill: white;
     -fx-font-size: 1.5em;
-    -fx-border-color: rgb(93, 70, 123);
+    -fx-border-color: rgb(162, 182, 209);
     -fx-border-width: 1px;
     -fx-border-radius: 10px;
     -fx-padding: 10px 30px;
 }
 
+.cipher-button {
+    -fx-background-color: rgb(104, 127, 168);
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 1em;
+    -fx-border-color: rgb(162, 182, 209);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
 .custom-button:hover {
-    -fx-background-color: rgb(53, 29, 83);
+    -fx-background-color: rgb(188, 207, 223);
+}
+
+.cipher-button:hover {
+    -fx-background-color: rgb(188, 207, 223);
 }
 
 .title {

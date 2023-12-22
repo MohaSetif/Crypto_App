@@ -2,34 +2,32 @@ package crypto_algos;
 
 public class Vigenere {
     public static String vigenereEncrypt(String message, String key) {
-        message = message.replaceAll(" ", "").toUpperCase();
-        key = key.replaceAll(" ", "").toUpperCase();
+        message = message.toUpperCase().replaceAll("[^A-Z]", "");
+        key = key.toUpperCase();
         StringBuilder encryptedText = new StringBuilder();
-        int messageLength = message.length();
-        int keyLength = key.length();
+        int keyIndex = 0;
 
-        for (int i = 0; i < messageLength; i++) {
-            char messageChar = message.charAt(i);
-            char keyChar = key.charAt(i % keyLength);
+        for (char messageChar : message.toCharArray()) {
+            char keyChar = key.charAt(keyIndex % key.length());
             int encryptedChar = (messageChar + keyChar - 2 * 'A') % 26 + 'A';
             encryptedText.append((char) encryptedChar);
+            keyIndex++;
         }
 
         return encryptedText.toString();
     }
 
     public static String vigenereDecrypt(String ciphertext, String key) {
-        ciphertext = ciphertext.replaceAll(" ", "").toUpperCase();
-        key = key.replaceAll(" ", "").toUpperCase();
+        ciphertext = ciphertext.toUpperCase();
+        key = key.toUpperCase();
         StringBuilder decryptedText = new StringBuilder();
-        int messageLength = ciphertext.length();
-        int keyLength = key.length();
+        int keyIndex = 0;
 
-        for (int i = 0; i < messageLength; i++) {
-            char encryptedChar = ciphertext.charAt(i);
-            char keyChar = key.charAt(i % keyLength);
+        for (char encryptedChar : ciphertext.toCharArray()) {
+            char keyChar = key.charAt(keyIndex % key.length());
             int decryptedChar = (encryptedChar - keyChar + 26) % 26 + 'A';
             decryptedText.append((char) decryptedChar);
+            keyIndex++;
         }
 
         return decryptedText.toString();
