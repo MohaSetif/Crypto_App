@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController" stylesheets="style.css">
-   <children>
-      <Button styleClass="custom-button" layoutX="367.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchToModernScene" text="Modern" />
-      <Button styleClass="custom-button" layoutX="173.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchToClassicScene" text="Classical" />
-      <Button styleClass="custom-button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToEntryScene" text="Go Back" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController" stylesheets="style.css">
+    <top>
+        <Button styleClass="custom-button" mnemonicParsing="false" onAction="#switchToEntryScene" text="Go Back" />
+    </top>
+    <center>
+        <HBox alignment="CENTER" spacing="200">
+            <Button styleClass="custom-button" mnemonicParsing="false" onAction="#switchToModernScene" text="Modern" />
+            <Button styleClass="custom-button" mnemonicParsing="false" onAction="#switchToClassicScene" text="Classical" />
+        </HBox>
+    </center>
+</BorderPane>
