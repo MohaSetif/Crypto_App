@@ -1,20 +1,47 @@
-.root{
-    -fx-background-color: rgb(16, 6, 29);
+@font-face {
+    font-family: "Regular-titillium";
+    src: url("../src/fonts/TitilliumWeb-Regular.ttf");
 }
 
-.label{
-    -fx-color: white;
+@font-face {
+    font-family: "Bold-titillium";
+    src: url("../src/fonts/TitilliumWeb-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Light-titillium";
+    src: url("../src/fonts/TitilliumWeb-Light.ttf");
+}
+
+.root {
+    -fx-background-color: rgb(16, 6, 29);
+    -fx-font-family: "Regular-titillium";
+}
+
+.title {
+    -fx-font-size: 3em;
+    -fx-text-fill: white;
+    -fx-font-family: "Regular-titillium";
 }
 
 .custom-button {
     -fx-background-color: rgb(29, 10, 53);
+    -fx-background-radius: 10px;
     -fx-text-fill: white;
-    -fx-font-size: 15px;
-    -fx-border-color: rgb(42, 20, 70);
+    -fx-font-size: 1.5em;
+    -fx-border-color: rgb(93, 70, 123);
     -fx-border-width: 1px;
+    -fx-border-radius: 10px;
     -fx-padding: 10px 30px;
 }
 
 .custom-button:hover {
-    -fx-background-color: rgb(41, 20, 67); /* darker color on hover */
+    -fx-background-color: rgb(53, 29, 83);
+}
+
+
+.title {
+    -fx-font-size: 5em;
+    -fx-text-fill: white;
+    -fx-font-family: "Regular-titillium";
 }
