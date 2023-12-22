@@ -7,12 +7,12 @@ public class TripleHill {
         int x = key[0][0] * ((key[1][1] * key[2][2]) - (key[1][2] * key[2][1]));
         int y = -key[1][0] * ((key[0][1] * key[2][2]) - (key[0][2] * key[2][1]));
         int z = key[2][0] * ((key[0][1] * key[1][2]) - (key[0][2] * key[1][1]));
-
+    
         long det = (x + y + z) % 26;
         det = (det + 26) % 26;
-
+    
         int detInverse = Mult_Inv.mult_inv((int) det, 26);
-
+    
         int[][] adjugate = new int[3][3];
         adjugate[0][0] = key[1][1] * key[2][2] - key[1][2] * key[2][1];
         adjugate[0][1] = key[0][2] * key[2][1] - key[0][1] * key[2][2];
@@ -23,7 +23,7 @@ public class TripleHill {
         adjugate[2][0] = key[1][0] * key[2][1] - key[1][1] * key[2][0];
         adjugate[2][1] = key[0][1] * key[2][0] - key[0][0] * key[2][1];
         adjugate[2][2] = key[0][0] * key[1][1] - key[0][1] * key[1][0];
-
+    
         int[][] inverse = new int[3][3];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -31,37 +31,39 @@ public class TripleHill {
                 inverse[i][j] = (inverse[i][j] + 26) % 26;
             }
         }
-
+    
         return inverse;
-    }
+    }    
 
     public static String hillCipherDecrypt(String ciphertext, String key) {
         ciphertext = ciphertext.replaceAll("[^a-zA-Z]", "").toUpperCase();
         key = key.replaceAll("[^a-zA-Z]", "").toUpperCase();
-
-        int original_length = ciphertext.length();
-        int padding = 9 - (ciphertext.length() % 9);
-
+    
+        int originalLength = ciphertext.length();
+    
+        // Adjusting the padding based on the original length
+        int padding = 9 - (originalLength % 9);
         if (padding != 9) {
             for (int i = 0; i < padding; i++) {
                 ciphertext += 'X';
             }
         }
-
+    
         int[][] c = new int[ciphertext.length() / MATRIX_SIZE][MATRIX_SIZE];
         int[][] k = new int[MATRIX_SIZE][MATRIX_SIZE];
         int[][] r = new int[ciphertext.length() / MATRIX_SIZE][MATRIX_SIZE];
-
+    
         for (int i = 0; i < ciphertext.length(); i++) {
             c[i / MATRIX_SIZE][i % MATRIX_SIZE] = ciphertext.charAt(i) - 'A';
         }
-
+    
         for (int i = 0; i < MATRIX_SIZE * MATRIX_SIZE; i++) {
             k[i / MATRIX_SIZE][i % MATRIX_SIZE] = key.charAt(i) - 'A';
         }
-
+    
         int[][] inverseKey = inverseKey(k);
-
+    
+        // Performing matrix multiplication
         for (int i = 0; i < ciphertext.length() / MATRIX_SIZE; i++) {
             for (int j = 0; j < MATRIX_SIZE; j++) {
                 r[i][j] = 0;
@@ -71,14 +73,15 @@ public class TripleHill {
                 }
             }
         }
-
+    
+        // Generating the decrypted text excluding the padding
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < original_length; i++) {
+        for (int i = 0; i < originalLength; i++) {
             result.append((char) (r[i / MATRIX_SIZE][i % MATRIX_SIZE] + 'A'));
         }
-
+    
         return result.toString();
-    }        
+    }              
 
     public static String hillCipherEncrypt(String message, String key) {
         message = message.replaceAll("[^a-zA-Z]", "").toUpperCase();
