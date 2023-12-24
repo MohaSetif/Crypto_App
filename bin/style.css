@@ -62,3 +62,23 @@
     -fx-text-fill: white;
     -fx-font-family: "Regular-titillium";
 }
+
+.tab-pane {
+    -fx-background-color: #f0f0f0;
+}
+
+.tab {
+    -fx-font-family: "Arial";
+    -fx-font-size: 16px;
+    -fx-text-fill: #12273c;
+    -fx-background-color: #dddddd;
+    -fx-background-insets: 0;
+    -fx-padding: 2 5;
+}
+
+.tab:selected {
+    -fx-background-color: #ffffff;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent transparent #000000 transparent;
+    -fx-border-width: 2px;
+}

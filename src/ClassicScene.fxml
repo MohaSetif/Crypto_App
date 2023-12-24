@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClassicAlgoController">
@@ -40,35 +42,83 @@
       <TextField fx:id="rails" layoutX="114.0" layoutY="727.0" prefHeight="26.0" prefWidth="78.0" promptText="nbr of rails" />
       <TextField fx:id="vig_key" layoutX="374.0" layoutY="690.0" prefHeight="26.0" prefWidth="208.0" promptText="Vigenere key" />
       <TextField fx:id="hill_key" layoutX="472.0" layoutY="727.0" prefHeight="26.0" prefWidth="109.0" promptText="Hill key" />
-      <TabPane layoutX="604.0" layoutY="20.0" prefHeight="727.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="604.0" layoutY="4.0" prefHeight="754.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="shiftCipherTab" text="Shift Cipher">
+          <Tab text="Shift Cipher">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                        <Image url="img/ShiftCipher.png" />
+                     </ImageView>
+                  </children>
+               </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Caesar Cipher">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                        <Image url="img/CaesarCipher.png" />
+                     </ImageView>
+                  </children>
+               </AnchorPane>
+            </content>
+          </Tab>
+         <Tab text="Rail Fence Cipher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="668.0" prefWidth="718.0" />
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/RailFenceCipher.png" />
+                        </ImageView>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab fx:id="affineCipherTab" text="Affine Cipher">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-            <Tab fx:id="railFenceCipherTab" text="Rail Fence Cipher">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
-            <Tab fx:id="vigenereCipherTab" text="Vigenere Cipher">
+            <Tab text="Affine Cipher">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/AffineCipher.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="hillCipherTab" text="Hill Cipher">
+            <Tab text="Vigenere Cipher">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="726.0" prefWidth="792.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/VigenereCipher.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="2x2 Hill Cipher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/DoubleHillCipher.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="3x3 Hill Cipher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/TripleHillCipher.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
         </tabs>

@@ -17,8 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -30,11 +28,6 @@ public class ClassicAlgoController{
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    @FXML
-    private TabPane tabPane;
-    @FXML
-    private Tab shiftCipherTab, hillCipherTab, affineCipherTab, railFenceCipherTab, vigenereCipherTab;
 
     @FXML
     private TextArea message;
@@ -53,39 +46,6 @@ public class ClassicAlgoController{
     @FXML
     private TextField affine_key1, affine_key2, shift, vig_key, hill_key;
 
-    // @FXML
-    // private void initialize() {
-    //     String baseFolderPath = "Crypto_App/src/crypto_algos";
-    //     loadMarkdownContent(shiftCipherTab, baseFolderPath + "ShiftCipher.md");
-    //     // loadMarkdownContent(affineCipherTab, baseFolderPath + "AffineCipher.md");
-    //     // loadMarkdownContent(railFenceCipherTab, baseFolderPath + "RailFenceCipher.md");
-    //     // loadMarkdownContent(vigenereCipherTab, baseFolderPath + "VigenereCipher.md");
-    //     // loadMarkdownContent(hillCipherTab, baseFolderPath + "HillCipher.md");
-    // }
-    
-    // private void loadMarkdownContent(Tab tab, String filePath) {
-    //     String markdownContent = readMarkdownFile(filePath);
-    
-    //     AnchorPane anchorPane = new AnchorPane();
-    //     WebView webView = new WebView();
-    //     webView.getEngine().loadContent(markdownContent);
-    //     anchorPane.getChildren().add(webView);
-    
-    //     tab.setContent(anchorPane);
-    // }
-    
-    // private String readMarkdownFile(String filePath) {
-    //     StringBuilder content = new StringBuilder();
-    //     try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-    //         String line;
-    //         while ((line = br.readLine()) != null) {
-    //             content.append(line).append("\n");
-    //         }
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    //     return content.toString();
-    // }    
 
     public void tripleHillCipher() {
         String inputText = message.getText();
@@ -94,7 +54,7 @@ public class ClassicAlgoController{
             setError("Please set your plain text.");
         }
         if (h_key.isEmpty()) {
-            setError("Please set your 2x2 Hill key.");
+            setError("Please set your 3x3 Hill key.");
         }
         if (encryptionRadioButton.isSelected()) {
             result.setText(TripleHill.hillCipherEncrypt(inputText, h_key));
@@ -112,7 +72,7 @@ public class ClassicAlgoController{
             setError("Please set your plain text.");
         }
         if (h_key.isEmpty()) {
-            setError("Please set your 3x3 Hill key.");
+            setError("Please set your 2x2 Hill key.");
         }
         if (encryptionRadioButton.isSelected()) {
             result.setText(DoubleHill.Hill_Enc(inputText, h_key));
