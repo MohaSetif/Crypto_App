@@ -74,6 +74,12 @@ public class TripleHill {
 
     private static String preprocessText(String text) {
         text = text.replaceAll("[^a-zA-Z]", "").toUpperCase();
+        int padding = 9 - (text.length() % 9);
+        if (padding != 9) {
+            for (int i = 0; i < padding; i++) {
+                text += 'X';
+            }
+        }
         return text;
     }
 
