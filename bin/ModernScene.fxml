@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModernAlgoController">
@@ -42,68 +44,94 @@
       <RadioButton fx:id="CFB" layoutX="410.0" layoutY="85.0" mnemonicParsing="false" text="CFB" toggleGroup="$modeofop" />
       <RadioButton fx:id="OFB" layoutX="471.0" layoutY="85.0" mnemonicParsing="false" text="OFB" toggleGroup="$modeofop" />
       <RadioButton fx:id="CTR" layoutX="535.0" layoutY="85.0" mnemonicParsing="false" text="CTR" toggleGroup="$modeofop" />
-      <Button layoutX="244.0" layoutY="660.0" mnemonicParsing="false" onAction="#Hash" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Hash" />
-      <Button layoutX="244.0" layoutY="692.0" mnemonicParsing="false" onAction="#Digital_Sign" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Digital Signiture" />
-      <RadioButton fx:id="sha1" layoutX="356.0" layoutY="664.0" mnemonicParsing="false" text="SHA-1">
+      <Button layoutX="311.0" layoutY="626.0" mnemonicParsing="false" onAction="#Hash" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Hash" />
+      <Button layoutX="311.0" layoutY="693.0" mnemonicParsing="false" onAction="#Digital_Sign" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Digital Signiture" />
+      <RadioButton fx:id="sha1" layoutX="311.0" layoutY="662.0" mnemonicParsing="false" text="SHA-1">
          <toggleGroup>
             <ToggleGroup fx:id="sha_type" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="sha256" layoutX="421.0" layoutY="664.0" mnemonicParsing="false" text="SHA-256" toggleGroup="$sha_type" />
-      <RadioButton fx:id="ds_1024" layoutX="355.0" layoutY="729.0" mnemonicParsing="false" text="1024">
+      <RadioButton fx:id="sha256" layoutX="376.0" layoutY="662.0" mnemonicParsing="false" text="SHA-256" toggleGroup="$sha_type" />
+      <RadioButton fx:id="ds_1024" layoutX="316.0" layoutY="731.0" mnemonicParsing="false" text="1024 bits">
          <toggleGroup>
             <ToggleGroup fx:id="DS_size" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="ds_4096" layoutX="479.0" layoutY="729.0" mnemonicParsing="false" text="4096" toggleGroup="$DS_size" />
-      <RadioButton fx:id="ds_2048" layoutX="421.0" layoutY="729.0" mnemonicParsing="false" text="2048" toggleGroup="$DS_size" />
-      <RadioButton fx:id="ds_rsa" layoutX="357.0" layoutY="696.0" mnemonicParsing="false" text="RSA">
+      <RadioButton fx:id="ds_4096" layoutX="480.0" layoutY="731.0" mnemonicParsing="false" text="4096 bits" toggleGroup="$DS_size" />
+      <RadioButton fx:id="ds_2048" layoutX="396.0" layoutY="731.0" mnemonicParsing="false" text="2048 bits" toggleGroup="$DS_size" />
+      <RadioButton fx:id="ds_rsa" layoutX="424.0" layoutY="697.0" mnemonicParsing="false" text="RSA">
          <toggleGroup>
             <ToggleGroup fx:id="DS_type" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="ds_dsa" layoutX="421.0" layoutY="696.0" mnemonicParsing="false" text="DSA" toggleGroup="$DS_type" />
+      <RadioButton fx:id="ds_dsa" layoutX="488.0" layoutY="697.0" mnemonicParsing="false" text="DSA" toggleGroup="$DS_type" />
       <TabPane layoutX="604.0" layoutY="20.0" prefHeight="727.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="AES">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <tabs>
+            <Tab text="AES">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="668.0" prefWidth="718.0" />
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/AESCipher.png" />
+                        </ImageView>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="DES">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
+               </content>
+            </Tab>
+            <Tab text="DES">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/DESCipher.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
             <Tab text="RSA">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/RSA.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
             <Tab text="Hash">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/Hash.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
             <Tab text="Digital Signiture">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="748.0" fitWidth="748.0" pickOnBounds="true">
+                           <Image url="img/Digital_Sign.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
         </tabs>
       </TabPane>
       <TextArea fx:id="message1" layoutX="17.0" layoutY="114.0" prefHeight="472.0" prefWidth="274.0" promptText="Your plain text..." styleClass="custom-input" />
       <TextArea fx:id="result1" editable="false" layoutX="308.0" layoutY="113.0" prefHeight="472.0" prefWidth="274.0" promptText="Your result..." styleClass="custom-input" />
-      <RadioButton fx:id="encryptionRadioButton" layoutX="194.0" layoutY="605.0" mnemonicParsing="false" selected="true" text="Encryption">
+      <RadioButton fx:id="encryptionRadioButton" layoutX="193.0" layoutY="595.0" mnemonicParsing="false" selected="true" text="Encryption">
          <toggleGroup>
             <ToggleGroup fx:id="mode" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="decryptionRadioButton" layoutX="327.0" layoutY="605.0" mnemonicParsing="false" text="Decryption">
+      <RadioButton fx:id="decryptionRadioButton" layoutX="326.0" layoutY="595.0" mnemonicParsing="false" text="Decryption">
          <toggleGroup>
             <ToggleGroup fx:id="mode" />
          </toggleGroup>

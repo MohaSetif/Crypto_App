@@ -61,6 +61,7 @@
     -fx-font-size: 5em;
     -fx-text-fill: white;
     -fx-font-family: "Regular-titillium";
+    -fx-border-radius: 15px;
 }
 
 .tab-pane {
