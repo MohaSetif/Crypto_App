@@ -53,11 +53,11 @@ public class TripleHill {
     
         int[][] c = createMatrixFromText(cipher);
         int[][] k = createMatrixFromText(key);
-    
+
         int[][] inverseKey = inverseKey(k);
         int[][] r = performMatrixMultiplication(c, inverseKey);
     
-        return generateText(r, cipher.length());
+        return generateText(r, ciphertext.length());
     }
     
     public static String hillCipherEncrypt(String message, String key) {
