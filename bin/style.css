@@ -40,6 +40,42 @@
     -fx-text-fill: white;
 }
 
+/* ===================== H O M E ===================== */
+
+.info-box {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 30px;
+    -fx-spacing: 20px;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 8, 0, 0, 0);
+}
+
+.info-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333;
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-text-alignment: center;
+}
+
+.info-box {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 30px;
+    -fx-spacing: 20px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 8, 0, 0, 0);
+}
+
+TextArea {
+    -fx-font-size: 18px;
+    -fx-wrap-text: true;
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #333;
+    -fx-border-width: 0;
+    -fx-font-family: 'Arial', sans-serif;
+}
+
+/* ========================================== */
+
 .custom-button {
     -fx-background-color: rgb(104, 127, 168);
     -fx-background-radius: 10px;
@@ -68,6 +104,7 @@
 
 .custom-button:hover {
     -fx-background-color: rgb(188, 207, 223);
+    -fx-effect: dropshadow(three-pass-box, rgba(26, 108, 143, 0.695), 5, 0, 0, 0);
 }
 
 .cipher-button:hover {
