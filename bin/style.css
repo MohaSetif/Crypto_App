@@ -1,31 +1,43 @@
-@font-face {
-    font-family: Regular-titillium;
-    src: url("../src/fonts/TitilliumWeb-Regular.ttf");
-}
-
-@font-face {
-    font-family: Bold-titillium;
-    src: url("../src/fonts/TitilliumWeb-Bold.ttf");
-}
-
-@font-face {
-    font-family: Light-titillium;
-    src: url("../src/fonts/TitilliumWeb-Light.ttf");
-}
-
 *{
     -fx-text-fill: rgb(66, 101, 148);
+    -fx-font-family: 'Trebuchet MS', sans-serif;
 }
 
 .root {
     -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, rgb(205, 219, 233), rgb(120, 164, 202));
-    -fx-font-family: Regular-titillium;
+}
+
+.top-section {
+    -fx-padding: 20px;
+    -fx-spacing: 100px;
+    -fx-alignment: TOP_CENTER;
 }
 
 .title {
-    -fx-font-size: 3em;
+    -fx-font-size: 10em;
     -fx-text-fill: white;
-    -fx-font-family: "Regular-titillium";
+    -fx-alignment: CENTER;
+}
+
+.subtitle {
+    -fx-font-size: 2em;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+
+.colored-section {
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, rgb(205, 219, 233), rgb(120, 164, 202));
+    -fx-pref-height: 468;
+}
+
+.white-section {
+    -fx-background-color: white;
+    -fx-pref-height: 300;
+}
+
+.logo-label {
+    -fx-font-size: 2em;
+    -fx-text-fill: white;
 }
 
 .custom-button {
@@ -37,6 +49,11 @@
     -fx-border-width: 1px;
     -fx-border-radius: 10px;
     -fx-padding: 10px 30px;
+}
+
+
+.white-section {
+    -fx-background-color: white;
 }
 
 .cipher-button {
@@ -55,13 +72,6 @@
 
 .cipher-button:hover {
     -fx-background-color: rgb(188, 207, 223);
-}
-
-.title {
-    -fx-font-size: 5em;
-    -fx-text-fill: white;
-    -fx-font-family: "Regular-titillium";
-    -fx-border-radius: 15px;
 }
 
 .tab-pane {

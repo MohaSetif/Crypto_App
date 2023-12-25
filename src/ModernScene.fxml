@@ -46,20 +46,20 @@
       <RadioButton fx:id="CTR" layoutX="535.0" layoutY="85.0" mnemonicParsing="false" text="CTR" toggleGroup="$modeofop" />
       <Button layoutX="311.0" layoutY="626.0" mnemonicParsing="false" onAction="#Hash" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Hash" />
       <Button layoutX="311.0" layoutY="693.0" mnemonicParsing="false" onAction="#Digital_Sign" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Digital Signiture" />
-      <RadioButton fx:id="sha1" layoutX="311.0" layoutY="662.0" mnemonicParsing="false" text="SHA-1">
+      <RadioButton fx:id="sha1" layoutX="311.0" layoutY="662.0" mnemonicParsing="false" selected="true" text="SHA-1">
          <toggleGroup>
             <ToggleGroup fx:id="sha_type" />
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="sha256" layoutX="376.0" layoutY="662.0" mnemonicParsing="false" text="SHA-256" toggleGroup="$sha_type" />
-      <RadioButton fx:id="ds_1024" layoutX="316.0" layoutY="731.0" mnemonicParsing="false" text="1024 bits">
+      <RadioButton fx:id="ds_1024" layoutX="316.0" layoutY="731.0" mnemonicParsing="false" selected="true" text="1024 bits">
          <toggleGroup>
             <ToggleGroup fx:id="DS_size" />
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="ds_4096" layoutX="480.0" layoutY="731.0" mnemonicParsing="false" text="4096 bits" toggleGroup="$DS_size" />
       <RadioButton fx:id="ds_2048" layoutX="396.0" layoutY="731.0" mnemonicParsing="false" text="2048 bits" toggleGroup="$DS_size" />
-      <RadioButton fx:id="ds_rsa" layoutX="424.0" layoutY="697.0" mnemonicParsing="false" text="RSA">
+      <RadioButton fx:id="ds_rsa" layoutX="424.0" layoutY="697.0" mnemonicParsing="false" selected="true" text="RSA">
          <toggleGroup>
             <ToggleGroup fx:id="DS_type" />
          </toggleGroup>
@@ -124,17 +124,13 @@
             </Tab>
         </tabs>
       </TabPane>
-      <TextArea fx:id="message1" layoutX="17.0" layoutY="114.0" prefHeight="472.0" prefWidth="274.0" promptText="Your plain text..." styleClass="custom-input" />
-      <TextArea fx:id="result1" editable="false" layoutX="308.0" layoutY="113.0" prefHeight="472.0" prefWidth="274.0" promptText="Your result..." styleClass="custom-input" />
-      <RadioButton fx:id="encryptionRadioButton" layoutX="193.0" layoutY="595.0" mnemonicParsing="false" selected="true" text="Encryption">
+      <TextArea fx:id="message" layoutX="17.0" layoutY="114.0" prefHeight="472.0" prefWidth="274.0" promptText="Your plain text..." styleClass="custom-input" />
+      <TextArea fx:id="result" editable="false" layoutX="308.0" layoutY="113.0" prefHeight="472.0" prefWidth="274.0" promptText="Your result..." styleClass="custom-input" />
+      <RadioButton fx:id="encryptionRadioButton" layoutX="194.0" layoutY="593.0" mnemonicParsing="false" selected="true" text="Encryption">
          <toggleGroup>
             <ToggleGroup fx:id="mode" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="decryptionRadioButton" layoutX="326.0" layoutY="595.0" mnemonicParsing="false" text="Decryption">
-         <toggleGroup>
-            <ToggleGroup fx:id="mode" />
-         </toggleGroup>
-      </RadioButton>
+      <RadioButton fx:id="decryptionRadioButton" layoutX="326.0" layoutY="593.0" mnemonicParsing="false" text="Decryption" toggleGroup="$mode" />
    </children>
 </AnchorPane>
