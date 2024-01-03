@@ -61,8 +61,9 @@ public class TripleHill {
     }
 
     public static String hillCipherEncrypt(String message, String key) {
+        message = message.replaceAll(" ", "").toUpperCase();
         String msg = preprocessText(message);
-        System.out.println(msg);
+
         key = preprocessText(key);
 
         int[][] m = createMatrixFromText(msg);
@@ -74,8 +75,6 @@ public class TripleHill {
     }
 
     private static String preprocessText(String text) {
-        text = text.replaceAll(" ", "").toUpperCase();
-        System.out.println(text);
         int padding = 9 - (text.length() % 9);
         if (padding != 9) {
             for (int i = 0; i < padding; i++) {
