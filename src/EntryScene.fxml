@@ -16,7 +16,7 @@
                     <Image url="img/encryptify_icon.png" />
                 </ImageView>
                 <Label alignment="CENTER" contentDisplay="CENTER" styleClass="title" text="Encryptify" />
-                <Label alignment="CENTER" contentDisplay="CENTER" styleClass="subtitle" text="built by Bourouba Med El Khalil" />
+                <Label alignment="CENTER" contentDisplay="CENTER" styleClass="subtitle" text="built by Bourouba Med El Khalil M1-CS 2023/2024" />
             </VBox>
         </StackPane>
     </center>
