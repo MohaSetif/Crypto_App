@@ -50,26 +50,26 @@ public class TripleHill {
     public static String hillCipherDecrypt(String ciphertext, String key) {
         String cipher = preprocessText(ciphertext);
         key = preprocessText(key);
-    
+
         int[][] c = createMatrixFromText(cipher);
         int[][] k = createMatrixFromText(key);
 
         int[][] inverseKey = inverseKey(k);
         int[][] r = performMatrixMultiplication(c, inverseKey);
-    
-        return generateText(r, ciphertext.length());
+
+        return generateText(r, ciphertext.length()).substring(0, ciphertext.length());
     }
-    
+
     public static String hillCipherEncrypt(String message, String key) {
         String msg = preprocessText(message);
         key = preprocessText(key);
-    
+
         int[][] m = createMatrixFromText(msg);
         int[][] k = createMatrixFromText(key);
-    
+
         int[][] r = performMatrixMultiplication(m, k);
-    
-        return generateText(r, msg.length());
+
+        return generateText(r, msg.length()).substring(0, message.length());
     }
 
     private static String preprocessText(String text) {
