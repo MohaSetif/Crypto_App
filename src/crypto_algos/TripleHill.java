@@ -50,30 +50,32 @@ public class TripleHill {
     public static String hillCipherDecrypt(String ciphertext, String key) {
         String cipher = preprocessText(ciphertext);
         key = preprocessText(key);
-    
+
         int[][] c = createMatrixFromText(cipher);
         int[][] k = createMatrixFromText(key);
 
         int[][] inverseKey = inverseKey(k);
         int[][] r = performMatrixMultiplication(c, inverseKey);
-    
-        return generateText(r, ciphertext.length());
+
+        return generateText(r, ciphertext.length()).substring(0, ciphertext.length());
     }
-    
+
     public static String hillCipherEncrypt(String message, String key) {
         String msg = preprocessText(message);
+        System.out.println(msg);
         key = preprocessText(key);
-    
+
         int[][] m = createMatrixFromText(msg);
         int[][] k = createMatrixFromText(key);
-    
+
         int[][] r = performMatrixMultiplication(m, k);
-    
-        return generateText(r, msg.length());
+
+        return generateText(r, msg.length()).substring(0, message.length());
     }
 
     private static String preprocessText(String text) {
-        text = text.replaceAll("[^a-zA-Z]", "").toUpperCase();
+        text = text.replaceAll(" ", "").toUpperCase();
+        System.out.println(text);
         int padding = 9 - (text.length() % 9);
         if (padding != 9) {
             for (int i = 0; i < padding; i++) {
@@ -81,7 +83,7 @@ public class TripleHill {
             }
         }
         return text;
-    }
+    }    
 
     private static int[][] createMatrixFromText(String text) {
         int[][] matrix = new int[text.length() / MATRIX_SIZE][MATRIX_SIZE];
@@ -95,7 +97,7 @@ public class TripleHill {
 
     private static int[][] performMatrixMultiplication(int[][] matrix1, int[][] matrix2) {
         int[][] result = new int[matrix1.length][MATRIX_SIZE];
-
+    
         for (int i = 0; i < matrix1.length; i++) {
             for (int j = 0; j < MATRIX_SIZE; j++) {
                 for (int x = 0; x < MATRIX_SIZE; x++) {
@@ -104,17 +106,24 @@ public class TripleHill {
                 result[i][j] = mod(result[i][j], 26);
             }
         }
-
+    
         return result;
     }
-
+    
     private static String generateText(int[][] matrix, int originalLength) {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < originalLength; i++) {
-            result.append((char) (matrix[i / MATRIX_SIZE][i % MATRIX_SIZE] + 'A'));
+        int rows = matrix.length;
+    
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < MATRIX_SIZE; j++) {
+                if (i * MATRIX_SIZE + j < originalLength) {
+                    result.append((char) (matrix[i][j] + 'A'));
+                }
+            }
         }
+    
         return result.toString();
-    }
+    }    
 
     private static int mod(int a, int b) {
         return ((a % b) + b) % b;
