@@ -20,9 +20,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class ClassicAlgoController{
     private Stage stage;
@@ -46,6 +51,26 @@ public class ClassicAlgoController{
     @FXML
     private TextField affine_key1, affine_key2, shift, vig_key, hill_key;
 
+    FileChooser fileChooser = new FileChooser();
+
+    @FXML
+    private void getText() {
+        File file = fileChooser.showOpenDialog(new Stage());
+        try {
+            Scanner sc = new Scanner(file);
+            while(sc.hasNextLine()) {
+                message.appendText(sc.nextLine() + "\n");
+            }
+            sc.close();
+        } catch (Exception e) {
+            setError("Could  ot fine the file, does it exist?");
+        }
+    }
+
+    @FXML
+    public void initialize(URL url, ResourceBundle resourceBundler) {
+        fileChooser.setInitialDirectory(new File("\\Crypto_App\\src"));
+    }
 
     public void tripleHillCipher() {
         String inputText = message.getText();

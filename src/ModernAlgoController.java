@@ -2,8 +2,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import crypto_algos.*;
-import crypto_algos.AES;
-import crypto_algos.RSA;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -17,8 +15,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class ModernAlgoController {
     private Stage stage;
@@ -33,6 +37,27 @@ public class ModernAlgoController {
     private Label error;
     @FXML
     private RadioButton encryptionRadioButton, decryptionRadioButton, aes_128, aes_192, aes_256, ECB, CBC, CFB, OFB, CTR, sha1, sha256, ds_1024, ds_2048, ds_4096, ds_rsa, ds_dsa;
+
+    FileChooser fileChooser = new FileChooser();
+
+    @FXML
+    private void getText() {
+        File file = fileChooser.showOpenDialog(new Stage());
+        try {
+            Scanner sc = new Scanner(file);
+            while(sc.hasNextLine()) {
+                message.appendText(sc.nextLine() + "\n");
+            }
+            sc.close();
+        } catch (Exception e) {
+            setError("Could  ot fine the file, does it exist?");
+        }
+    }
+
+    @FXML
+    public void initialize(URL url, ResourceBundle resourceBundler) {
+        fileChooser.setInitialDirectory(new File("\\Crypto_App\\src"));
+    }
 
     public void setError(String err){
         error.setText(err);
