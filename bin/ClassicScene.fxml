@@ -123,6 +123,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="16.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#getText" text="Upload your file here" />
+      <Button styleClass="cipher-button" layoutX="16.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#getText" text="Upload your file.txt here" />
    </children>
 </AnchorPane>

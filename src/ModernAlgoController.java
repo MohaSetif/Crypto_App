@@ -41,18 +41,26 @@ public class ModernAlgoController {
     FileChooser fileChooser = new FileChooser();
 
     @FXML
-    private void getText() {
+     private void getText() {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.TXT", "*.txt");
+        fileChooser.getExtensionFilters().addAll(txtFilter);
+    
         File file = fileChooser.showOpenDialog(new Stage());
-        try {
-            Scanner sc = new Scanner(file);
-            while(sc.hasNextLine()) {
-                message.appendText(sc.nextLine() + "\n");
+        if (file != null) {
+            try {
+                Scanner sc = new Scanner(file);
+                while (sc.hasNextLine()) {
+                    message.appendText(sc.nextLine() + "\n");
+                }
+                sc.close();
+            } catch (Exception e) {
+                setError("Could not find the file. Does it exist?");
             }
-            sc.close();
-        } catch (Exception e) {
-            setError("Could  ot fine the file, does it exist?");
+        } else {
+            setError("No file selected.");
         }
-    }
+    }  
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundler) {

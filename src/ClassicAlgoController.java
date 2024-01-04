@@ -1,12 +1,6 @@
 import java.io.IOException;
 
 import crypto_algos.*;
-import crypto_algos.Affine;
-import crypto_algos.DoubleHill;
-import crypto_algos.Euclidean;
-import crypto_algos.Mult_Inv;
-import crypto_algos.TripleHill;
-import crypto_algos.Vigenere;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -55,17 +49,25 @@ public class ClassicAlgoController{
 
     @FXML
     private void getText() {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(txtFilter);
+    
         File file = fileChooser.showOpenDialog(new Stage());
-        try {
-            Scanner sc = new Scanner(file);
-            while(sc.hasNextLine()) {
-                message.appendText(sc.nextLine() + "\n");
+        if (file != null) {
+            try {
+                Scanner sc = new Scanner(file);
+                while (sc.hasNextLine()) {
+                    message.appendText(sc.nextLine() + "\n");
+                }
+                sc.close();
+            } catch (Exception e) {
+                setError("Could not find the file. Does it exist?");
             }
-            sc.close();
-        } catch (Exception e) {
-            setError("Could  ot fine the file, does it exist?");
+        } else {
+            setError("No file selected.");
         }
-    }
+    }    
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundler) {
