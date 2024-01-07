@@ -13,7 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModernAlgoController">
+<AnchorPane prefHeight="790.0" prefWidth="1540.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModernAlgoController">
    <children>
       <Label layoutX="206.0" layoutY="14.0" text="Modern Cryptography">
          <font>
@@ -65,7 +65,7 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="ds_dsa" layoutX="488.0" layoutY="697.0" mnemonicParsing="false" text="DSA" toggleGroup="$DS_type" />
-      <TabPane layoutX="604.0" layoutY="20.0" prefHeight="727.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="604.0" layoutY="20.0" prefHeight="727.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="20.799999999999955" AnchorPane.leftAnchor="603.5999999999999" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0">
          <tabs>
             <Tab text="AES">
                <content>
@@ -124,7 +124,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button styleClass="cipher-button" layoutX="16.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#getText" text="Upload your file.txt here" />
+      <Button layoutX="16.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#getText" styleClass="cipher-button" text="Upload your file.txt here" />
       <TextArea fx:id="message" layoutX="17.0" layoutY="114.0" prefHeight="472.0" prefWidth="274.0" promptText="Your plain text..." styleClass="custom-input" />
       <TextArea fx:id="result" editable="false" layoutX="308.0" layoutY="113.0" prefHeight="472.0" prefWidth="274.0" promptText="Your result..." styleClass="custom-input" />
       <RadioButton fx:id="encryptionRadioButton" layoutX="194.0" layoutY="593.0" mnemonicParsing="false" selected="true" text="Encryption">

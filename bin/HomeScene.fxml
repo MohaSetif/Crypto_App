@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextArea?>
 
-<BorderPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController" stylesheets="style.css">
+<BorderPane prefHeight="790.0" prefWidth="1540.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController" stylesheets="style.css">
     <top>
         <Button styleClass="cipher-button" mnemonicParsing="false" onAction="#switchToEntryScene" text="Go Back" />
     </top>

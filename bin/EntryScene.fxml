@@ -8,7 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<BorderPane fx:id="borderPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController" stylesheets="style.css">
+<BorderPane fx:id="borderPane" prefHeight="790.0" prefWidth="1540.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController" stylesheets="style.css">
     <center>
         <StackPane fx:id="coloredSection" styleClass="colored-section">
             <VBox alignment="CENTER" styleClass="top-section">

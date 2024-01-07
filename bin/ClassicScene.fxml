@@ -13,7 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClassicAlgoController">
+<AnchorPane prefHeight="790.0" prefWidth="1540.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClassicAlgoController">
    <children>
       <Label layoutX="206.0" layoutY="14.0" text="Classic Cryptography">
          <font>
@@ -42,8 +42,8 @@
       <TextField fx:id="rails" layoutX="114.0" layoutY="727.0" prefHeight="26.0" prefWidth="78.0" promptText="nbr of rails" />
       <TextField fx:id="vig_key" layoutX="374.0" layoutY="690.0" prefHeight="26.0" prefWidth="208.0" promptText="Vigenere key" />
       <TextField fx:id="hill_key" layoutX="472.0" layoutY="727.0" prefHeight="26.0" prefWidth="109.0" promptText="Hill key" />
-      <TabPane layoutX="604.0" layoutY="4.0" prefHeight="754.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
+      <TabPane layoutX="604.0" layoutY="4.0" prefHeight="754.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="9.600000000000023" AnchorPane.leftAnchor="603.5999999999999" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="4.0">
+         <tabs>
           <Tab text="Shift Cipher">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -123,6 +123,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button styleClass="cipher-button" layoutX="16.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#getText" text="Upload your file.txt here" />
+      <Button layoutX="16.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#getText" styleClass="cipher-button" text="Upload your file.txt here" />
    </children>
 </AnchorPane>
