@@ -44,8 +44,8 @@
       <RadioButton fx:id="CFB" layoutX="410.0" layoutY="85.0" mnemonicParsing="false" text="CFB" toggleGroup="$modeofop" />
       <RadioButton fx:id="OFB" layoutX="471.0" layoutY="85.0" mnemonicParsing="false" text="OFB" toggleGroup="$modeofop" />
       <RadioButton fx:id="CTR" layoutX="535.0" layoutY="85.0" mnemonicParsing="false" text="CTR" toggleGroup="$modeofop" />
-      <Button layoutX="311.0" layoutY="626.0" mnemonicParsing="false" onAction="#Hash" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Hash" />
-      <Button layoutX="311.0" layoutY="693.0" mnemonicParsing="false" onAction="#Digital_Sign" prefHeight="26.0" prefWidth="103.0" styleClass="cipher-button" text="Digital Signiture" />
+      <Button layoutX="311.0" layoutY="626.0" mnemonicParsing="false" onAction="#Hash" prefHeight="26.0" prefWidth="106.0" styleClass="cipher-button" text="Hash" />
+      <Button layoutX="311.0" layoutY="693.0" mnemonicParsing="false" onAction="#Digital_Sign" prefHeight="26.0" prefWidth="106.0" styleClass="cipher-button" text="Digital Signiture" />
       <RadioButton fx:id="sha1" layoutX="311.0" layoutY="662.0" mnemonicParsing="false" selected="true" text="SHA-1">
          <toggleGroup>
             <ToggleGroup fx:id="sha_type" />

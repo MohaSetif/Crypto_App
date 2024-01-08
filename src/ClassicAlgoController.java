@@ -20,6 +20,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
+import java.security.InvalidKeyException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -77,36 +78,64 @@ public class ClassicAlgoController{
     public void tripleHillCipher() {
         String inputText = message.getText();
         String h_key = hill_key.getText();
-        if (inputText.isEmpty()) {
-            setError("Please set your plain text.");
+        String key = h_key.replaceAll("[^a-zA-Z]", "").toUpperCase();
+
+        int[][] k = new int[key.length() / 3][3];
+
+        for (int i = 0; i < key.length(); i++) {
+            k[i / 3][i % 3] = key.charAt(i) - 'A';
         }
-        if (h_key.isEmpty()) {
-            setError("Please set your 3x3 Hill key.");
-        }
-        if (encryptionRadioButton.isSelected()) {
-            result.setText(TripleHill.hillCipherEncrypt(inputText, h_key));
-        } else if (decryptionRadioButton.isSelected()) {
-            result.setText(TripleHill.hillCipherDecrypt(inputText, h_key));
-        } else {
-            setError("Please select encryption or decryption.");
+
+        int det = k[0][0] * ((k[1][1] * k[2][2]) - (k[1][2] * k[2][1]))
+                - k[0][1] * ((k[1][0] * k[2][2]) - (k[1][2] * k[2][0]))
+                + k[0][2] * ((k[1][0] * k[2][1]) - (k[1][1] * k[2][0]));
+
+        if ((det % 2 == 0) || (det % 13 == 0) || (det == 0)){
+            setError("Your Hill key is wrong, reset it again!");
+        }else{
+            if (inputText.isEmpty()) {
+                setError("Please set your plain text.");
+            }
+            if (h_key.isEmpty()) {
+                setError("Please set your 3x3 Hill key.");
+            }
+            if (encryptionRadioButton.isSelected()) {
+                result.setText(TripleHill.hillCipherEncrypt(inputText, h_key));
+            } else if (decryptionRadioButton.isSelected()) {
+                result.setText(TripleHill.hillCipherDecrypt(inputText, h_key));
+            } else {
+                setError("Please select encryption or decryption.");
+            }
         }
     }
 
-    public void DoubleHillCipher() {
+    public void DoubleHillCipher() throws InvalidKeyException{
         String inputText = message.getText();
         String h_key = hill_key.getText();
-        if (inputText.isEmpty()) {
-            setError("Please set your plain text.");
+        String key = h_key.replaceAll("[^a-zA-Z]", "").toUpperCase();
+        int[][] k = new int[2][2];
+        for (int i = 0; i < 2 * 2; i++) {
+            k[i / 2][i % 2] = key.charAt(i) - 'A';
         }
-        if (h_key.isEmpty()) {
-            setError("Please set your 2x2 Hill key.");
-        }
-        if (encryptionRadioButton.isSelected()) {
-            result.setText(DoubleHill.Hill_Enc(inputText, h_key));
-        } else if (decryptionRadioButton.isSelected()) {
-            result.setText(DoubleHill.Hill_Dec(inputText, h_key));
-        } else {
-            setError("Please select encryption or decryption.");
+
+        int det = k[0][0] * k[1][1] - k[0][1] * k[1][0];
+
+        if ((det % 2 == 0) || (det % 13 == 0) || (det == 0)){
+            setError("Your Hill key is wrong, reset it again!");
+        }else{
+            if (inputText.isEmpty()) {
+                setError("Please set your plain text.");
+            }
+            if (h_key.isEmpty()) {
+                setError("Please set your 2x2 Hill key.");
+            }
+            if (encryptionRadioButton.isSelected()) {
+                result.setText(DoubleHill.Hill_Enc(inputText, h_key));
+            } else if (decryptionRadioButton.isSelected()) {
+                result.setText(DoubleHill.Hill_Dec(inputText, h_key));
+            } else {
+                setError("Please select encryption or decryption.");
+            }
         }
     }
 

@@ -94,6 +94,13 @@ public class ModernAlgoController {
             setError("Please set your DES key.");
         }
 
+        int size = 8;
+
+        if(desKey.length() != size){
+            setError("The DES key must be " + size + " characters long.");
+            return;
+        }
+
         String mode = "";
         if (ECB.isSelected()) {
             mode = "ECB";

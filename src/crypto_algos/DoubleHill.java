@@ -1,5 +1,7 @@
 package crypto_algos;
 
+import java.security.InvalidKeyException;
+
 public class DoubleHill {
     private static final int MATRIX_SIZE = 2;
 
@@ -46,7 +48,7 @@ public class DoubleHill {
         return result.toString();
     }
 
-    public static String Hill_Dec(String ciphertext, String key) {
+    public static String Hill_Dec(String ciphertext, String key) throws InvalidKeyException {
         ciphertext = ciphertext.replaceAll("[^a-zA-Z]", "").toUpperCase();
         key = key.replaceAll("[^a-zA-Z]", "").toUpperCase();
 
@@ -91,8 +93,13 @@ public class DoubleHill {
         return result.toString();
     }
 
-    public static int[][] inv_key(int[][] key) {
+    public static int[][] inv_key(int[][] key){
         int det = key[0][0] * key[1][1] - key[0][1] * key[1][0];
+
+        while(det < 0){
+            det += 26;
+        }
+
         int detInverse = Mult_Inv.mult_inv(det, 26);
 
         int[][] adjugate = new int[MATRIX_SIZE][MATRIX_SIZE];
